@@ -40,7 +40,6 @@ INSERT INTO courses (title) VALUES
 ('Quantum Mechanics'),
 ('Physical Chemistry'),
 ('Genetics');
-
 SELECT * FROM students;
 SELECT * FROM departments;
 SELECT * FROM courses;
@@ -103,8 +102,6 @@ on delete set NULL;
 DELETE FROM departments
     WHERE id =2;
 
-SELECT * FROM students;
-SELECT * FROM departments;
 
 ------==========---------===========----------============---------
 -- 7. Join students and departments using INNER JOIN to display each student's department name.
@@ -113,4 +110,13 @@ INNER JOIN departments on s.d_id = departments.id;
 
 -- another way but not working because students id is "d_id" and departments id is "id" . When id is match then it was match! other wise not match the id.
 SELECT * FROM students
-JOIN departments USING(id) 
+JOIN departments USING(id)
+
+
+-- 8. Use a LEFT JOIN to show all students including those without a department.
+
+SELECT * FROM students;
+SELECT * FROM departments;
+
+SELECT * FROM students
+    LEFT JOIN departments on students.d_id = departments.id;
