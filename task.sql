@@ -60,3 +60,11 @@ SELECT
     to_char(DATE_TRUNC('month', last_login), 'Month') AS month_name
 FROM students
     GROUP BY month_name;
+
+
+-- 3. Count how many students logged in per month and show only those months where login count is more than 3.
+SELECT extract(MONTH from last_login) as last_year, count(*) FROM students
+GROUP BY last_year
+HAVING count(*) > 3;
+
+
