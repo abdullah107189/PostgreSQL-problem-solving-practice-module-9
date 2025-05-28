@@ -11,6 +11,11 @@ CREATE TABLE departments(
     "name" VARCHAR(50)
 )
 
+CREATE TABLE courses(
+    id SERIAL PRIMARY KEY,
+    title TEXT
+)
+
 INSERT INTO students ("name", d_id, last_login) VALUES
 ('Alice Johnson', 1, '2023-10-01'),
 ('Bob Smith', 2, '2023-10-02'),
@@ -25,7 +30,19 @@ INSERT INTO departments ("name") VALUES
 ('Chemistry'),
 ('Biology');
 
+INSERT INTO courses (title) VALUES
+('Introduction to Computer Science'),
+('Calculus I'),
+('General Physics'),
+('Organic Chemistry'),
+('Molecular Biology'),
+('Data Structures'),
+('Linear Algebra'),
+('Quantum Mechanics'),
+('Physical Chemistry'),
+('Genetics');
+
 SELECT * FROM students;
 SELECT * FROM departments;
-
+SELECT * FROM courses;
 
