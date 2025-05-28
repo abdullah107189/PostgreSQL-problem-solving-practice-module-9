@@ -120,3 +120,7 @@ SELECT * FROM departments;
 
 SELECT * FROM students
     LEFT JOIN departments on students.d_id = departments.id;
+-- 9.Use a RIGHT JOIN to show all departments including those without students.
+SELECT * FROM departments
+    RIGHT JOIN students on departments.id = students.d_id;
+
