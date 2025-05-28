@@ -50,3 +50,13 @@ SELECT * FROM courses;
 -- 1. Retrieve students who have logged in within the last 30 days.
 SELECT * FROM students
     WHERE last_login >=  CURRENT_DATE - INTERVAL '30 days';
+
+-- 2. Extract the login month from the last_login and group students by month.
+SELECT extract(MONTH FROM last_login) as month_show FROM students
+    GROUP BY month_show;
+
+-- bonus solution
+SELECT 
+    to_char(DATE_TRUNC('month', last_login), 'Month') AS month_name
+FROM students
+    GROUP BY month_name;
