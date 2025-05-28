@@ -105,3 +105,12 @@ DELETE FROM departments
 
 SELECT * FROM students;
 SELECT * FROM departments;
+
+------==========---------===========----------============---------
+-- 7. Join students and departments using INNER JOIN to display each student's department name.
+SELECT * FROM students as s
+INNER JOIN departments on s.d_id = departments.id;
+
+-- another way but not working because students id is "d_id" and departments id is "id" . When id is match then it was match! other wise not match the id.
+SELECT * FROM students
+JOIN departments USING(id) 
