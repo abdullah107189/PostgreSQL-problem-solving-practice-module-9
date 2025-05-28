@@ -133,3 +133,12 @@ SELECT students.id ,students."name", departments.name
 FROM students 
 CROSS JOIN departments
 ORDER BY students."name" ASC;
+
+-- 12. Use NATURAL JOIN between tables that have a shared column like department_id.
+ALTER Table departments  RENAME COLUMN id to d_id; 
+SELECT *
+FROM students
+NATURAL JOIN departments;
+
+SELECT * FROM students;
+SELECT * FROM departments;
