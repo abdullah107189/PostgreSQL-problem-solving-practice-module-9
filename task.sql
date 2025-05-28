@@ -127,3 +127,9 @@ SELECT * FROM departments
 -- 10. Perform a FULL JOIN to get all records from both students and departments.
 SELECT * FROM departments
     FULL JOIN students on departments.id = students.d_id;
+
+-- 11. Create a cross-product of all students and courses using CROSS JOIN.
+SELECT students.id ,students."name", departments.name 
+FROM students 
+CROSS JOIN departments
+ORDER BY students."name" ASC;
