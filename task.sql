@@ -14,14 +14,13 @@ CREATE TABLE departments(
 CREATE TABLE courses(
     id SERIAL PRIMARY KEY,
     title TEXT
-)
-
+);
 INSERT INTO students ("name", d_id, last_login) VALUES
-('Alice Johnson', 1, '2023-10-01'),
-('Bob Smith', 2, '2023-10-02'),
-('Charlie Brown', 1, '2023-10-03'),
-('Diana Prince', 3, '2023-10-04'),
-('Ethan Hunt', 2, '2023-10-05');
+('Alice Johnson', 1, '2025-5-15'),
+('Bob Smith', 2, '2025-4-02'),
+('Charlie Brown', 1, '2025-4-30'),
+('Diana Prince', 3, '2025-5-04'),
+('Ethan Hunt', 2, '2025-3-05');
 
 INSERT INTO departments ("name") VALUES
 ('Computer Science'),
@@ -46,3 +45,8 @@ SELECT * FROM students;
 SELECT * FROM departments;
 SELECT * FROM courses;
 
+
+------==========---------===========----------============---------
+-- 1. Retrieve students who have logged in within the last 30 days.
+SELECT * FROM students
+    WHERE last_login >=  CURRENT_DATE - INTERVAL '30 days';
