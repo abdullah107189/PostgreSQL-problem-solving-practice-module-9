@@ -68,3 +68,40 @@ GROUP BY last_year
 HAVING count(*) > 3;
 
 
+------==========---------===========----------============---------
+-- 4. Create a foreign key constraint on department_id in the students table referencing departments(id).
+-- ✅ REFERENCES departments(id) দিয়ে টেবিল already created, তখনই Foreign Key Constraint তৈরি হয়ে গেছে।
+-- ⛔ তাই আবার দিতে গেলে error দিবে (Duplicate constraint)।
+
+-- 5.Try inserting a student with a department_id that doesn’t exist and observe the behavior.
+INSERT INTO students("name", d_id, last_login) VALUES('test', 22,'2025-05-01');
+-- error is ----> Error: insert or update on table "students" violates foreign key constraint "students_d_id_fkey".
+
+-- 6. Delete a department and see how students are affected using ON DELETE CASCADE and ON DELETE SET NULL.
+SELECT * FROM departments;
+SELECT * FROM students;
+ALTER TABLE students
+DROP constraint students_d_id_fkey;
+
+ALTER TABLE students
+ADD constraint students_d_id_fkey
+Foreign Key (d_id) REFERENCES departments(id)
+on delete CASCADE;
+
+DELETE FROM departments
+    WHERE id = 1;
+
+-- now null style delete
+ALTER TABLE students
+DROP constraint students_d_id_fkey;
+
+ALTER TABLE students
+ADD constraint students_d_id_fkey
+Foreign Key (d_id) REFERENCES departments(id)
+on delete set NULL;
+
+DELETE FROM departments
+    WHERE id =2;
+
+SELECT * FROM students;
+SELECT * FROM departments;
